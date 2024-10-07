@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Ball</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        .ball {
+            position: absolute;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    // Function to generate a random color
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    // Function to create a ball with random position and color
+    function createRandomBall() {
+        // Get the viewport dimensions
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        // Create a new div element for the ball
+        const ball = document.createElement('div');
+
+        // Set the ball's size
+        const ballSize = Math.floor(Math.random() * 50) + 50; // Random size between 50 and 100px
+        ball.style.width = ballSize + 'px';
+        ball.style.height = ballSize + 'px';
+
+        // Set a random position for the ball
+        const posX = Math.floor(Math.random() * (width - ballSize));
+        const posY = Math.floor(Math.random() * (height - ballSize));
+        ball.style.left = posX + 'px';
+        ball.style.top = posY + 'px';
+
+        // Set a random color for the ball
+        ball.style.backgroundColor = getRandomColor();
+
+        // Add the ball class for styling
+        ball.classList.add('ball');
+
+        // Append the ball to the body
+        document.body.appendChild(ball);
+    }
+
+    // Create a ball when the page loads
+    createRandomBall();
+</script>
+
+</body>
+</html>
